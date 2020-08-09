@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:templateapp/widgets/keyboardAvoidingView.dart';
 
 class PageContainer extends StatelessWidget {
   final String title;
@@ -27,7 +28,7 @@ class PageContainer extends StatelessWidget {
         //   ),
         //   actions: actions,
         // ),
-        body: child,
+        body: KeyboardAvoidingView(child: child),
       ),
     );
   }

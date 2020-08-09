@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:templateapp/screen/login.dart';
+import 'package:templateapp/utils/classBuilder.dart';
+import 'package:templateapp/utils/routes.dart';
 
 void main() {
-  runApp(MyApp());
+  ClassBuilder.registerClasses();
+  var _defaultHome = LoginPage.id;
+
+  runApp(MyApp(
+    homeScreen: _defaultHome,
+  ));
 }
 
 class MyApp extends StatelessWidget {
+  final String homeScreen;
+  const MyApp({@required this.homeScreen});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return MaterialApp(
+      initialRoute: homeScreen,
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: Scaffold(
-        resizeToAvoidBottomInset: false,
-        // appBar: AppBar(
-        //   title: Text("Template"),
-        // ),
-        body: new GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
-          child: LoginPage(),
-        ),
-      ),
+      routes: routes(),
     );
   }
 }
