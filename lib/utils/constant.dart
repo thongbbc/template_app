@@ -68,6 +68,13 @@ class FontStyle {
     );
   }
 
+  TextStyle superLight() {
+    return TextStyle(
+      fontFamily: family,
+      fontWeight: FontWeight.w100,
+    );
+  }
+
   TextStyle extraLight() {
     return TextStyle(
       fontFamily: family,
